@@ -4,19 +4,13 @@
     "description": "",
     "main": "app.js",
     "scripts": {
+        "start": "node serverExpress.js",
         "test": "echo \"Error: no test specified\" && exit 1",
         "dev": "nodemon serverExpress.js"
     },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/YauhenKavalchuk/node-js.git"
-    },
+
     "author": "Yauhen Kavalchuk",
     "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/YauhenKavalchuk/node-js/issues"
-    },
-    "homepage": "https://github.com/YauhenKavalchuk/node-js#readme",
     "devDependencies": {
         "nodemon": "^2.0.7"
     },
