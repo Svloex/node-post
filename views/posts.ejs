@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document |
+        <%= title %>
+    </title>
+</head>
+
+<body>
+    <%- include('./partials/nav.ejs') %>
+        <h1>POSTS:</h1>
+        <div style="background-color: rgb(172, 110, 187);">
+            <% if(posts.length) { posts.forEach(({id,author,createdAt,text,date,title})=>{ %>
+                <div>
+                    <a href="/posts/<%= id %>" style="text-transform:uppercase; text-align: center;">
+                        <%= title %>
+                    </a>
+                </div>
+                <div style="float: left;color: aqua;">
+                    <%= author %>
+                </div> <br>
+                <div style="float: left;color: aqua;">
+                    <%= createdAt.toLocaleDateString() %>
+                </div>
+                <div style="text-transform:uppercase; text-align: center;">
+                    <%= text %>
+                </div>
+                <button class="button" data-id="<%= id %>">Delete <%= id %></button>
+                <%}) }%>
+        </div>
+        <script>
+            document.addEventListener("click", (e) => {
+                const id = e.target.dataset.id ? e.target.dataset.id : null;
+                console.log(id);
+                if (id) {
+                    fetch(`/posts/${id}`, {
+                        method: "DELETE",
+
+                    }).then(() => {
+                        window.location.reload()
+                    })
+                }
+            })
+        </script>
+
+</body>
+
+</html>
