@@ -9,7 +9,7 @@ const getPost = (req, res) => {
     Post
         .findById(req.params.id)
         .then(post => {
-            console.log("я тут был")
+
             return res.render(createPath("post"), { post, title })
         })
         .catch(err => hundleError(res, err))
@@ -27,7 +27,7 @@ const getEditPost = (req, res) => {
     Post
         .findById(req.params.id)
         .then(post => {
-            res.render(createPath("edit-post"), { post, title: "Edit" })
+            res.render(createPath("edit-post"), { post, title })
         })
         .catch(err => hundleError(res, err))
 }
@@ -38,7 +38,6 @@ const editPost = (req, res) => {
     Post
         .findByIdAndUpdate(id, { title, author, text })
         .then(result => {
-            console.log("вот это" + req.params)
             res.redirect(`/posts/${id}`)
         })
         .catch(err => hundleError(res, err))
