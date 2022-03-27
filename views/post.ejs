@@ -1,49 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document |
-        <%= title %>
-    </title>
-</head>
-
+  <%- include('./partials/head.ejs') %>
 <body>
-    <%- include('./partials/nav.ejs') %>
-        <div style="background-color: rgb(60, 160, 185);">
-            <div style="text-transform:uppercase; text-align: center;">
-                <div style="color: aqua;">
-                    <%= post.title || "No title" %>
-                </div><br>
-                <div style="float: left;color: aqua;">
-                    <%= post.author || "No author" %>
-                </div> <br>
-                <div style="float: left;color: aqua;">
-                    <%= post.createdAt.toLocaleDateString() || "No date" %>
-                </div> <br>
-                <%= post.text %>
-                    <div style="float: right;"><a href="/edit/<%= post.id%>">Edit</a> <br>
-                        <button data-id="<%= post.id %>">Delete</button></div>
+  <%- include('./partials/nav.ejs') %>
+  <article class="post">
+    <div class="info">
+      <span><%= post.createdAt.toLocaleDateString() || 'No date' %></span>
+      <span><%= post.author %></span>
+    </div>
+    <h1><%= post.title %></h1>
+    <p><%= post.text %></p>
+    <a href="/edit/<%= post.id %>" class="btn-edit">
+      <i class="fas fa-edit"></i>
+    </a>
+    <button class="btn-delete" data-id="<%= post.id %>">
+      <i class="fas fa-trash-alt" data-id="<%= post.id %>"></i>
+    </button>
+  </article>
 
-            </div>
-        </div>
-        <script>
-            document.addEventListener("click", (e) => {
-                const id = e.target.dataset.id ? e.target.dataset.id : null;
-                console.log(id);
-                if (id) {
-                    fetch(`/posts/${id}`, {
-                        method: "DELETE",
-
-                    }).then(() => {
-                        window.location.href = "/posts"
-                    })
-                }
-            })
-        </script>
-
+  <script>
+    document.addEventListener('click', (e) => {
+      const id = e.target?.dataset?.id || null;
+      if (id) {
+        fetch(`/posts/${id}`, {
+          method: 'DELETE',
+        }).then(() => {
+          window.location.href = '/posts';
+        });
+      }
+    });
+  </script>
 </body>
-
 </html>
