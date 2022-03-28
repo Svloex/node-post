@@ -3,11 +3,11 @@ const express = require("express")
 const chalk = require("chalk")
 const morgan = require("morgan")
 const mongoose = require("mongoose")
-require("dotenv").config()
-const methodOverride = require("method-override")
-const postRoutes = require('./routes/api-post-routes')
+require('dotenv').config()
+const methodOverride = require('method-override')
+const postRoutes = require('./routes/post-routes')
 const contactsRoutes = require('./routes/contact-routes')
-const postApiRoutes = require('./routes/post-routes')
+const postApiRoutes = require('./routes/api-post-routes')
 const createPath = require('./helpers/create-path')
     // const { title } = require("process")
 const errorMsg = chalk.bgKeyword("white").redBright
@@ -21,7 +21,7 @@ mongoose
     .then(res => console.log(successMsg("Connected to DB")))
     .catch(err => console.log(errorMsg(err)))
 
-app.listen(process.env.PORT, "localhost", (err) => {
+app.listen(process.env.PORT, (err) => {
     err ? console.log(errorMsg(err)) : console.log(successMsg(`listening port ${process.env.PORT}`))
 })
 app.use(morgan('method :url :status :res[content-length] - :response-time ms'))
