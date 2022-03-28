@@ -6,7 +6,7 @@ const mongoose = require("mongoose")
 require('dotenv').config()
 const methodOverride = require('method-override')
 const postRoutes = require('./routes/post-routes')
-const contactsRoutes = require('./routes/contact-routes')
+const contactsRoutes = require('./routes/contacts-routes')
 const postApiRoutes = require('./routes/api-post-routes')
 const createPath = require('./helpers/create-path')
 
