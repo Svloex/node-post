@@ -1,5 +1,5 @@
 const express = require("express")
-    //const path = require("path")
+
 const chalk = require("chalk")
 const morgan = require("morgan")
 const mongoose = require("mongoose")
@@ -9,13 +9,12 @@ const postRoutes = require('./routes/post-routes')
 const contactsRoutes = require('./routes/contact-routes')
 const postApiRoutes = require('./routes/api-post-routes')
 const createPath = require('./helpers/create-path')
-    // const { title } = require("process")
+
 const errorMsg = chalk.bgKeyword("white").redBright
 const successMsg = chalk.bgKeyword("green").white
 const app = express()
 app.set("view engine", "ejs")
-    // const PORT = 3002
-    // const db = 'sdhfjhruwuwer/ewhwuhtew.verh'
+
 mongoose
     .connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(res => console.log(successMsg("Connected to DB")))
@@ -33,11 +32,6 @@ app.get('/', (req, res) => {
     res.render(createPath("index"), { title })
 })
 
-app.get('/about-us', (req, res) => {
-
-    res.redirect("/contacts")
-
-})
 app.use(postRoutes)
 app.use(contactsRoutes)
 app.use(postApiRoutes)
