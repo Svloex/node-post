@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div style="display: flex;">
+        <ul style="border: 1px green dashed;display: flex; gap: 102px; padding-left: 0px; margin: 0 auto; text-transform: uppercase; font-weight: 700;">
+            <a href="/">Home</a>
+            <a href="/posts">Posts</a>
+            <a href="/add-post">New Post</a>
+            <a href="/contacts">Contacts</a>
+        </ul>
+    </div>
+    <div style="position: relative; display: flex; background-color: rgb(249, 245, 250); top: 20px; border: 1px red solid; background-color: aquamarine;">
+        <form action="" style="margin: 0 auto;">
+            <div style="display: inline-block;">
+                <label style="display: block;" for="posttitle" for="">Post title</label>
+                <input id="posttitle" type="text" name="posttitle">
+            </div>
+            <div style="display: inline-block;">
+                <label style="display: block;" for="author">Author</label>
+                <input id="author" type="text">
+            </div>
+            <div>
+                <label style="display: block;" for="posttext">Post text</label>
+                <textarea style="width:100%; max-width: 352px; height:100px; max-height: 100px;" id="posttext" type="text"></textarea>
+            </div>
+            <div style="display: inline-block;"><input type="submit"></div>
+
+        </form>
+    </div>
+
+</body>
+
+</html>

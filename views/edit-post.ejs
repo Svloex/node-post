@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../nav.css">
+    <title>Document |
+        <%= title %>
+    </title>
+</head>
+
+<body>
+    <%- include('./partials/nav.ejs') %>
+        <div style="position: relative; display: flex;  top: 20px; background-color: #eee;">
+            <form method="post" action="/edit/<%= post.id %>?_method=PUT" style="margin: 0 auto;">
+                <div style="display: inline-block;">
+                    <label style="display: block;" for="title" for="">Post title</label>
+                    <input id="title" type="text" name="title" value="<%= post.title %>">
+                </div>
+                <div style="display: inline-block;">
+                    <label style="display: block;" for="author">Author</label>
+                    <input id="author" name="author" type="text" value="<%= post.author %>">
+                </div>
+                <div>
+                    <label style="display: block;" for="text">Post text</label>
+                    <textarea style="width:100%; max-width: 352px; height:100px; max-height: 100px;" id="text" name="text" type="text" value="<%= post.text %>"><%= post.text %></textarea>
+                </div>
+                <div style="display: inline-block;"><input type="submit"></div>
+
+            </form>
+        </div>
+
+</body>
+
+</html>

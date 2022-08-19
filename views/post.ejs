@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../nav.css">
+    <link rel="stylesheet" href="../author-icon.css">
+    <link rel="stylesheet" href="../posts.css">
+    <title>Document |
+        <%= title %>
+    </title>
+</head>
+
+<body>
+    <svg display="none">
+        <symbol id="author" viewBox="0 0 100.353 100.353">
+            <g>
+                <path d="M51.775,54.264C31.718,54.264,15.4,71.193,15.4,92c0,0.828,0.671,1.5,1.5,1.5h69.75c0.828,0,1.5-0.672,1.5-1.5
+                    C88.15,71.193,71.833,54.264,51.775,54.264z M18.431,90.5c0.757-18.46,15.424-33.236,33.345-33.236
+                    c17.92,0,32.587,14.776,33.345,33.236H18.431z"/>
+                <path d="M51.146,50.142c11.568,0,20.98-9.74,20.98-21.713S62.715,6.716,51.146,6.716s-20.979,9.74-20.979,21.713
+                    S39.578,50.142,51.146,50.142z M51.146,9.716c9.914,0,17.98,8.395,17.98,18.713s-8.066,18.713-17.98,18.713
+                    s-17.979-8.395-17.979-18.713S41.232,9.716,51.146,9.716z"/>
+            </g>
+        </symbol>
+    </svg>
+    <%- include('./partials/nav.ejs') %>
+        <div class="posts_authors" style="margin-top:15px;">
+            <div class="post_author"><svg class="author">
+                <use xlink:href="#author"></use>
+            </svg>
+                <span>
+                        <%= post.author || "No author" %>
+            </span>
+            </div>
+            <div class="author_content">
+                <div class="title">
+                    <%= post.title || "No title" %> <span style="color:red;">&#171;</span>
+                        <a style="color:red;" href="/edit/<%= post.id%>">Edit</a>
+                </div>
+                <br>
+                <div class="massage">
+                    <span>massage:</span>
+                    <%= post.text %>
+                </div>
+                <div class="date">
+                    <%= post.createdAt.toLocaleDateString() || "No date" %>
+                        <button data-id="<%= post.id %>">Delete</button>
+                </div>
+            </div>
+        </div>
+
+
+        <script>
+            document.addEventListener("click", (e) => {
+                const id = e.target.dataset.id ? e.target.dataset.id : null;
+                console.log(id);
+                if (id) {
+                    fetch(`/posts/${id}`, {
+                        method: "DELETE",
+
+                    }).then(() => {
+                        window.location.href = "/posts"
+                    })
+                }
+            })
+        </script>
+
+</body>
+
+</html>

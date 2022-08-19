@@ -1,0 +1,13 @@
+.author {
+    fill: rgb(23, 110, 187);
+    width: 20px;
+    height: 20px;
+}
+
+.author:hover {
+    fill: rgb(255, 0, 221);
+    width: 23px;
+    height: 23px;
+    background: green;
+    border-radius: 50%;
+}

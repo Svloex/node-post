@@ -1,0 +1,29 @@
+.posts {
+    display: flex;
+    flex-direction: column;
+}
+
+.posts div {}
+
+.posts_authors {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5px;
+    background: #eee;
+}
+
+.post_author {
+    width: 10%;
+}
+
+.author_content {
+    width: 90%;
+}
+
+.author_content .button {
+    float: right;
+}
+
+.author_content .date {
+    float: right;
+}
